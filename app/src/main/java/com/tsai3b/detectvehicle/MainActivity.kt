@@ -50,18 +50,17 @@ class MainActivity : AppCompatActivity() {
                 val targetAppPackageName = "com.ml.tensorflow.examples.lpr"
 
                 val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                    type = "image/*" //MINE_TYPE // "image/jpeg" // "image/png" // 或  等，根據你的儲存格式
+                    type = "image/*"
                     putExtra(Intent.EXTRA_STREAM, sharedImageUri)
-                    // 非常重要：授予讀取 URI 的權限給接收 Intent 的 App
+                    // important to add permission
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     if (needPlateRect)
-                        putExtra(Intent.EXTRA_TEXT, "$packageName()") //"()" needCoordinate of plate box
+                        putExtra(Intent.EXTRA_TEXT, "$packageName()") //"()" need Coordinate of plate box
                     else
                         putExtra(Intent.EXTRA_TEXT, packageName)
                     setPackage(targetAppPackageName) // target app
                 }
                 startActivity(shareIntent) //specify targetApp
-                //startActivity(Intent.createChooser(shareIntent, "Share to")) //choice app
             }
         }
         sharedImageView.setOnLongClickListener {
@@ -91,34 +90,8 @@ class MainActivity : AppCompatActivity() {
                             sharedTextView.text = "Json Text:$text"
                             hasText = true
                         }
-                        sharedImageUri = null
+                        sharedImageUri = null // comment if don't need load image 
                     }
-                } else if (intent.type?.startsWith("image/") == true) {
-                    val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
-                    sharedImageUri =
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-                        intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM, Uri::class.java)
-                    else {
-                        @Suppress("DEPRECATION")
-                        intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM)
-                    }
-                    if (!sharedText.isNullOrEmpty() && sharedImageUri != null) {
-                        //sharedTextView.text = "分享的文字:\n$sharedText"
-                        //displayImage(sharedImageUri)
-                        hasText = true
-                        sharedTextView.text = sharedText
-                        displayImage(sharedImageUri!!)
-                    } else if (!sharedText.isNullOrEmpty()) {
-                        //sharedTextView.text = "分享的文字:\n$sharedText"
-                        hasText = true
-                        sharedTextView.text = sharedText
-                    } else if (sharedImageUri != null) {
-                        //displayImage(sharedImageUri)
-                        displayImage(sharedImageUri!!)
-                    }
-                }
-                sharedImageUri?.let {
-                    displayImage(it)
                 }
             }
             Intent.ACTION_MAIN -> {hasText = true}
