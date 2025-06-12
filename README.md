@@ -42,10 +42,10 @@ Notes:
    1. 首先透過google play store 將"AI車牌辨識" app 下載安裝在目標裝置(手機) (搜尋"AI車牌辨識") ("AI車牌辨識" app 可不啟動或在背景)
    2. 下載此範例程式在Android Studio環境下 編譯此範例app並在目標裝置(手機)上調試測試即可 (可測試"AI車牌辨識" app 沒啟動和啟動後再背景兩情況下反應)
    3. 範例重點 :
-    a. 此範例底下有兩個按鍵,"Image" 按鍵可挑選含有車輛的圖片載入顯示在螢幕，"Vehicle in Image" 按鍵分享圖片並啟動給特定app("AI車牌辨識") 此特定app接收到圖片後偵測圖中車輛資訊並回傳給提出請求的app (json text)
-   b. 可請求兩類資訊 : 總體資訊格式如下: [{"license_plate":{"license_plate_color":"white", "number":"AJM-5083"},"vehicle":{"Model":"Mitsubishi Lancer Fortis","color":"blue","type":"car"}}]
+   3.1. 此範例底下有兩個按鍵,"Image" 按鍵可挑選含有車輛的圖片載入顯示在螢幕，"Vehicle in Image" 按鍵分享圖片並啟動給特定app("AI車牌辨識") 此特定app接收到圖片後偵測圖中車輛資訊並回傳給提出請求的app (json text)
+   3.2 可請求兩類資訊 : 總體資訊格式如下: [{"license_plate":{"license_plate_color":"white", "number":"AJM-5083"},"vehicle":{"Model":"Mitsubishi Lancer Fortis","color":"blue","type":"car"}}]
     車牌座標資訊: 格式如下:  [{"plate":{"bottom":2335,"left":1535,"right":2190,"top":1712},"texts":"AJM-5083","vhType":"car"}]
-   c. 範例中藉由長按image 畫面可切換要回傳的格式，收到回傳在
+   3.3 範例中藉由長按image 畫面可切換要回傳的格式，收到回傳在
       override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
@@ -68,7 +68,7 @@ Notes:
         }
         return hasText
     }
-  d.  在 AndroidManifest.xml 檔內的 Main Activity  增加
+    3.4 在 AndroidManifest.xml 檔內的 Main Activity  增加
       <intent-filter>
           <action android:name="android.intent.action.SEND" />
           <category android:name="android.intent.category.DEFAULT" />
