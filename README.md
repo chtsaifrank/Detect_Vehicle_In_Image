@@ -12,13 +12,15 @@ usage example video : https://youtu.be/A2sLP8xASr4
 9. In this project example by long pressing the image can switch the type of vehicle information to query when cick the "Vehicle in Image" button
 
 ## Notes:
-## 1. add     <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-   in the Main Activity of AndroidManifest.xml file , it allow to receive text sent by other apps
-## 2. override fun onNewIntent(intent: Intent) {
+## 1. add below  in the Main Activity of AndroidManifest.xml file , it allow to receive text sent by other apps     
+      <intent-filter>
+          <action android:name="android.intent.action.SEND" />
+          <category android:name="android.intent.category.DEFAULT" />
+          <data android:mimeType="text/plain" />
+      </intent-filter>
+  
+## 2. handle return intent in 
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
     } to handle the received intent when it is activie
@@ -42,9 +44,10 @@ usage example video : https://youtu.be/A2sLP8xASr4
    1. 首先透過google play store 將"AI車牌辨識" app 下載安裝在目標裝置(手機) (搜尋"AI車牌辨識") ("AI車牌辨識" app 可不啟動或在背景)
    2. 下載此範例程式在Android Studio環境下 編譯此範例app並在目標裝置(手機)上調試測試即可 (可測試"AI車牌辨識" app 沒啟動和啟動後再背景兩情況下反應)
    3. 範例重點 :
-   ##a. 此範例底下有兩個按鍵,"Image" 按鍵可挑選含有車輛的圖片載入顯示在螢幕，"Vehicle in Image" 按鍵分享圖片並啟動給特定app("AI車牌辨識") 此特定app接收到圖片後偵測圖中車輛資訊並回傳給提出請求的app (json text)
-   ## b. 可請求兩類資訊 : 總體資訊格式如下: [{"license_plate":{"license_plate_color":"white", "number":"AJM-5083"},"vehicle":{"Model":"Mitsubishi Lancer Fortis","color":"blue","type":"car"}}]
-    車牌座標資訊: 格式如下:  [{"plate":{"bottom":2335,"left":1535,"right":2190,"top":1712},"texts":"AJM-5083","vhType":"car"}]
+   ## a. 此範例底下有兩個按鍵,"Image" 按鍵可挑選含有車輛的圖片載入顯示在螢幕，"Vehicle in Image" 按鍵分享圖片並啟動給特定app("AI車牌辨識") 此特定app接收到圖片後偵測圖中車輛資訊並回傳給提出請求的app (json text)
+   ## b. 可請求兩類資訊 : 
+     車輛總體資訊格式如下: [{"license_plate":{"license_plate_color":"white", "number":"AJM-5083"},"vehicle":{"Model":"Mitsubishi Lancer Fortis","color":"blue","type":"car"}}]
+     車牌座標資訊格式如下:  [{"plate":{"bottom":2335,"left":1535,"right":2190,"top":1712},"texts":"AJM-5083","vhType":"car"}]
   ## c. 範例中藉由長按image 畫面可切換要回傳的格式，收到回傳在
       override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
@@ -68,11 +71,11 @@ usage example video : https://youtu.be/A2sLP8xASr4
         }
         return hasText
     }
-  ## d. 在 AndroidManifest.xml 檔內的 Main Activity  增加
+  ## d. 在 AndroidManifest.xml 檔內的 Main Activity  增加以下使得此範例app能夠接收 其他app傳送的文字!
       <intent-filter>
           <action android:name="android.intent.action.SEND" />
           <category android:name="android.intent.category.DEFAULT" />
           <data android:mimeType="text/plain" />
       </intent-filter>
-      使得此範例app能夠接收 其他app傳送的文字!
+      
       
