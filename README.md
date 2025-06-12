@@ -48,11 +48,11 @@ usage example video : https://youtu.be/A2sLP8xASr4
    ## b. 可請求兩類資訊 : 
      車輛總體資訊格式如下: [{"license_plate":{"license_plate_color":"white", "number":"AJM-5083"},"vehicle":{"Model":"Mitsubishi Lancer Fortis","color":"blue","type":"car"}}]
      車牌座標資訊格式如下:  [{"plate":{"bottom":2335,"left":1535,"right":2190,"top":1712},"texts":"AJM-5083","vhType":"car"}]
-  ## c. 範例中藉由長按image 畫面可切換要回傳的格式，收到回傳在
+  ## c. 範例中藉由長按image 畫面可切換要回傳的格式，收到回傳在onNewIntent中處理 ，本範例 handleIntent(intent) 如下:
       override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
-      } 中處理 ，本範例 handleIntent(intent) 如下:
+      } 
       private fun handleIntent(intent: Intent) :Boolean {
         var hasText = false
         when (intent.action) {
