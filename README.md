@@ -11,7 +11,7 @@ usage example video : https://youtu.be/A2sLP8xASr4
 8. b. plate coordinate informtion in image, [{"plate":{"bottom":2335,"left":1535,"right":2190,"top":1712},"texts":"AJM-5083","vhType":"car"}]
 9. In this project example by long pressing the image can switch the type of vehicle information to query when cick the "Vehicle in Image" button
 
-# Notes:
+## Notes:
 ## 1. add     <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -38,7 +38,7 @@ usage example video : https://youtu.be/A2sLP8xASr4
                 startActivity(shareIntent) //specify targetApp
          }
 
-# 此範例程式展示 如何透過已有的車牌辨識APP: "AI車牌辨識" app 寫個簡單app就能獲得圖像裡所有車輛的詳細資訊包含車牌號碼，顏色，在圖內座標，車輛車型，廠牌，類型，顏色等豐富資訊，並解有比擬人眼的準確率!
+## 此範例程式展示 如何透過已有的車牌辨識APP: "AI車牌辨識" app 寫個簡單app就能獲得圖像裡所有車輛的詳細資訊包含車牌號碼，顏色，在圖內座標，車輛車型，廠牌，類型，顏色等豐富資訊，並且有比擬人眼的準確率!
    1. 首先透過google play store 將"AI車牌辨識" app 下載安裝在目標裝置(手機) (搜尋"AI車牌辨識") ("AI車牌辨識" app 可不啟動或在背景)
    2. 下載此範例程式在Android Studio環境下 編譯此範例app並在目標裝置(手機)上調試測試即可 (可測試"AI車牌辨識" app 沒啟動和啟動後再背景兩情況下反應)
    3. 範例重點 :
