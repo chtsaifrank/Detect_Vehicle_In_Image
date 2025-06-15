@@ -6,6 +6,7 @@ import android.content.ClipboardManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         sharedImageView = findViewById(R.id.sharedImageView)
         sharedTextView = findViewById(R.id.sharedTextView)
+        sharedTextView.movementMethod = ScrollingMovementMethod()
         shareButton = findViewById(R.id.shareButton)
         photoButton = findViewById(R.id.photoButton)
 
