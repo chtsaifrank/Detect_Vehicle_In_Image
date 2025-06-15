@@ -9,8 +9,10 @@
         android:id="@+id/sharedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Information Will Appear Here"
+        android:text="Query Json text Appear Here"
         android:layout_gravity="start"
+        android:maxLines="8"
+        android:scrollbars="vertical"
         android:textSize="16sp" />
 
 
