@@ -1,7 +1,7 @@
-# Android example to get vehicles information in image by query the installed app (AI車牌辨識) from google play store
+# Android example to get vehicles information in image by query the installed app (AI license plate recognition 車牌辨識) from google play store
 Android app (AI車牌辨識) AI(ANPR) download place  https://play.google.com/store/apps/details?id=com.ml.tensorflow.examples.lpr
 usage example video : https://youtu.be/A2sLP8xASr4
-1. Open google play store to find "AI車牌辨識" app and install it in the target device (phone).
+1. Open google play store to find "AI車牌辨識" app and install it and allow all permissions when initialization in the target device (phone).
 2. Download this example project and build it in android studio and install it in the target device.
 3. Ciick "Image" button to pick and load a image which exist vehicles in image.
 4. Ciick "Vehicle in Image" button to launch the "AI車牌辨識" app quietly and asking the vehicles information in image.
@@ -41,7 +41,7 @@ usage example video : https://youtu.be/A2sLP8xASr4
          }
 
 ## 此範例程式展示 如何透過已有的車牌辨識APP: "AI車牌辨識" app 寫個簡單app就能獲得圖像裡所有車輛的詳細資訊包含車牌號碼，顏色，在圖內座標，車輛車型，廠牌，類型，顏色等豐富資訊，並且有比擬人眼的準確率!
-   1. 首先透過google play store 將"AI車牌辨識" app 下載 地址: https://play.google.com/store/apps/details?id=com.ml.tensorflow.examples.lpr 安裝在目標裝置(手機) (搜尋"AI車牌辨識") ("AI車牌辨識" app 可不啟動或在背景)
+   1. 首先透過google play store 將"AI車牌辨識" app 下載 地址: https://play.google.com/store/apps/details?id=com.ml.tensorflow.examples.lpr 安裝在目標裝置(手機)並執行同意所需要執行的權限(搜尋"AI車牌辨識") ("AI車牌辨識" app 可不啟動或在背景)
    2. 下載此範例程式在Android Studio環境下 編譯此範例app並在目標裝置(手機)上調試測試即可 (可測試"AI車牌辨識" app 沒啟動和啟動後再背景兩情況下反應)
    3. 範例重點 :
    ## a. 此範例底下有兩個按鍵,"Image" 按鍵可挑選含有車輛的圖片載入顯示在螢幕，"Vehicle in Image" 按鍵分享圖片並啟動給特定app("AI車牌辨識") 此特定app接收到圖片後偵測圖中車輛資訊並回傳給提出請求的app (json text)
